@@ -48,6 +48,7 @@ const sectionsProp = [
 ]
 
 class App extends React.Component {
+
   render() {
     return (
       <main className='App'>

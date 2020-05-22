@@ -2,18 +2,21 @@ import React from 'react';
 import './Accordion.css'
 
 class Accordion extends React.Component {
-    state = {
-        currentIndex: 0,
-        hidden: false,
+    static defaultProps = {
+        sections: [{
+            
+        }]
     }
-
-
+    state = {
+        currentIndex: null,
+    }
+    
+    
     handleButtonClick(index) {
         this.setState({ 
-            currentIndex: index,
-            hidden: !this.state.hidden,
+            currentIndex: this.state.currentIndex == index?null:index,
         })
-
+    
     }
 
     renderSections() {
@@ -27,7 +30,7 @@ class Accordion extends React.Component {
                         </button>
                     </li>
                 </ul>
-                {this.state.hidden?<p>{section.content}</p>:null}
+                {this.state.currentIndex == index?<p>{section.content}</p>:null}
             </div>
 
 
@@ -50,6 +53,7 @@ class Accordion extends React.Component {
             </div>
         )
     }
+
 }
 
 export default Accordion;
